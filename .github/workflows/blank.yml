@@ -1,11 +1,13 @@
 name: build
-on: [push, pull_request, workflow_dispatch]
+on: [push, workflow_dispatch]
 
 jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
+      - run: unzip -q project.zip
+      - run: test -f astra-tech/src/main/resources/fabric.mod.json
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -14,7 +16,10 @@ jobs:
         with:
           gradle-version: 8.5
       - run: gradle build --no-daemon
+        working-directory: astra-tech
       - uses: actions/upload-artifact@v4
         with:
           name: astra-tech-jar
-          path: build/libs/*.jar
+          path: |
+            astra-tech/build/libs/*.jar
+            !astra-tech/build/libs/*-sources.jar
