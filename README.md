@@ -16,6 +16,3 @@ Minecraft 1.20.1, Fabric Loader 0.15.11+, Fabric API 0.92.2+1.20.1, Java 17.
 5. Showcase tab (creative / op level 2 / singleplayer) spawns any item, mob, or warps you.
 
 Jetpack (Astral Chestplate): hold jump in air; sneak+jump hovers. Dedicated servers need `allow-flight=true`.
-
-## Status
-Written without a compiler available; not built or run. If the build reports errors, paste the log and they can be fixed quickly.
