@@ -3,8 +3,8 @@
   "temperature": 0.8,
   "downfall": 0.0,
   "effects": {
-    "sky_color": 0,
-    "fog_color": 0,
+    "sky_color": 1705528,
+    "fog_color": 2755146,
     "water_color": 4159204,
     "water_fog_color": 329011
   },
@@ -34,7 +34,8 @@
     [],
     [
       "astratech:gray_berry_patch",
-      "astratech:purple_berry_patch"
+      "astratech:purple_berry_patch",
+      "astratech:crystal_cluster"
     ],
     []
   ],

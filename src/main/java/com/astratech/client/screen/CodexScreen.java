@@ -336,7 +336,7 @@ public class CodexScreen extends Screen {
 		int w = cw - 8;
 		int y = cy - scroll + 2;
 		y = heading(ctx, "The Moon", x, y, CYAN);
-		y = text(ctx, "No atmosphere, no clouds: only black sky, a blazing sun and Earth hanging huge overhead. Three biomes cover the surface: the grey Mare Plains, the rugged Highlands and the glittering Crystal Basin.", x, y, w, TEXT) + 4;
+		y = text(ctx, "No atmosphere, no clouds: only black sky, a blazing sun and Earth hanging huge overhead. Three large biomes cover the surface: the grey Mare Plains (the middle ground, mixed regolith), the rugged Highlands (tall rough terrain of gravel and dark basalt, home of Spires, Radar and Stations) and the glittering Crystal Basin (a low bowl of ashen dust under a purple haze, studded with towering Plasma Crystal formations). Use /locate biome to find them.", x, y, w, TEXT) + 4;
 		y = text(ctx, "Impact craters scar the surface and hide Plasma Crystal deposits. Drones, Stalkers and Sentinels roam freely, even in daylight. Astro Bots and Lunar Hoppers are friendly.", x, y, w, TEXT) + 6;
 		y = heading(ctx, "Structures", x, y, CYAN);
 		y = text(ctx, "Outposts: small glass domes with an antenna mast, a loot chest and sometimes a guard.", x, y, w, TEXT) + 2;
