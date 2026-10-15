@@ -57,6 +57,9 @@ public final class ModItems {
 	public static final Item PURPLE_LUNAR_BERRIES = item("purple_lunar_berries", new net.minecraft.item.AliasedBlockItem(ModBlocks.PURPLE_LUNAR_BERRY_BUSH,
 		new Item.Settings().food(new net.minecraft.item.FoodComponent.Builder().hunger(2).saturationModifier(0.3f)
 			.statusEffect(new net.minecraft.entity.effect.StatusEffectInstance(net.minecraft.entity.effect.StatusEffects.JUMP_BOOST, 400, 1), 1.0f).snack().build())));
+	public static final Item SPACE_JAM = item("space_jam", new Item(new Item.Settings().maxCount(16).food(new net.minecraft.item.FoodComponent.Builder().hunger(7).saturationModifier(0.7f)
+		.statusEffect(new net.minecraft.entity.effect.StatusEffectInstance(net.minecraft.entity.effect.StatusEffects.REGENERATION, 200, 0), 1.0f)
+		.statusEffect(new net.minecraft.entity.effect.StatusEffectInstance(net.minecraft.entity.effect.StatusEffects.JUMP_BOOST, 600, 1), 1.0f).build())));
 	public static final Item METEOR_HAMMER = item("meteor_hammer", new MeteorHammerItem(new Item.Settings().rarity(Rarity.EPIC).fireproof()));
 	public static final Item ASTRAL_BLADE = item("astral_blade", new AstralSwordItem(new Item.Settings().rarity(Rarity.EPIC).fireproof()));
 	public static final Item PULSE_BLASTER = item("pulse_blaster", new PulseBlasterItem(new Item.Settings().maxCount(1).maxDamage(2400).rarity(Rarity.EPIC).fireproof()));

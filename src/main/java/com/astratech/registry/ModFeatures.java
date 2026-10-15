@@ -1,5 +1,6 @@
 package com.astratech.registry;
 
+import com.astratech.world.AsteroidFeature;
 import com.astratech.world.CraterFeature;
 import com.astratech.world.OutpostFeature;
 import com.astratech.world.RadarFeature;
@@ -29,6 +30,9 @@ public final class ModFeatures {
 		new Identifier("astratech", "sanctum"), new SanctumFeature(DefaultFeatureConfig.CODEC));
 	public static final Feature<DefaultFeatureConfig> RADAR = Registry.register(Registries.FEATURE,
 		new Identifier("astratech", "radar"), new RadarFeature(DefaultFeatureConfig.CODEC));
+
+	public static final Feature<DefaultFeatureConfig> ASTEROID = Registry.register(Registries.FEATURE,
+		new Identifier("astratech", "asteroid"), new AsteroidFeature(DefaultFeatureConfig.CODEC));
 
 	private ModFeatures() {
 	}

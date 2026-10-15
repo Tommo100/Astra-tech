@@ -67,6 +67,11 @@ public class LunarHopperEntity extends AnimalEntity {
 	}
 
 	@Override
+	public boolean handleFallDamage(float fallDistance, float damageMultiplier, net.minecraft.entity.damage.DamageSource damageSource) {
+		return false;
+	}
+
+	@Override
 	protected float getJumpVelocity() {
 		return 0.75f;
 	}

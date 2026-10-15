@@ -15,7 +15,9 @@
     [
       "astratech:crater_common"
     ],
-    [],
+    [
+      "astratech:asteroid"
+    ],
     [
       "astratech:outpost",
       "astratech:radar",

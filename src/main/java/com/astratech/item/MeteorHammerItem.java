@@ -137,7 +137,7 @@ public class MeteorHammerItem extends SwordItem {
 		for (int i = 0; i < 3; i++) {
 			Vec3d target = targets[i];
 			double height = 32.0 + i * 14.0;
-			Vec3d start = new Vec3d(target.x + 9.0 + i * 3.0, Math.min(target.y + height, 125.0), target.z - 7.0 + i * 5.0);
+			Vec3d start = new Vec3d(target.x + 9.0 + i * 3.0, Math.min(target.y + height, 240.0), target.z - 7.0 + i * 5.0);
 			Vec3d dir = target.subtract(start).normalize();
 			MeteorEntity meteor = new MeteorEntity(world, player);
 			meteor.setPosition(start.x, start.y, start.z);

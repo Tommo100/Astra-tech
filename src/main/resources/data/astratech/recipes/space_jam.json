@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "ingredients": [
+    {
+      "item": "astratech:gray_lunar_berries"
+    },
+    {
+      "item": "astratech:purple_lunar_berries"
+    }
+  ],
+  "result": {
+    "item": "astratech:space_jam",
+    "count": 1
+  }
+}

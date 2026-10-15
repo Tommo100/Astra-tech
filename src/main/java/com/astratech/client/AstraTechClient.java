@@ -75,6 +75,8 @@ public class AstraTechClient implements ClientModInitializer {
 
 		// Blocks
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUNAR_PORTAL, RenderLayer.getTranslucent());
+		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GRAY_LUNAR_BERRY_BUSH, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PURPLE_LUNAR_BERRY_BUSH, RenderLayer.getCutout());
 
 		// Moon sky
 		DimensionRenderingRegistry.registerDimensionEffects(new Identifier("astratech", "moon"), new MoonEffects());

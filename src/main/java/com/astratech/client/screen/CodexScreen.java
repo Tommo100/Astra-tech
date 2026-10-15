@@ -353,7 +353,8 @@ public class CodexScreen extends Screen {
 		y = iconLine(ctx, ModBlocks.TECH_PLATING.asItem(), "Tech Plating: armoured hull panels (2 Astrium + 2 Iron makes 4).", x, y, w, TEXT);
 		y = iconLine(ctx, ModBlocks.PLASMA_LAMP.asItem(), "Plasma Lamp: the brightest light source in the mod.", x, y, w, TEXT);
 		y = iconLine(ctx, ModBlocks.LUNAR_REGOLITH.asItem(), "Lunar Regolith, Dust, Gravel, Cracked and Ashen Regolith, and Mare Basalt cover the Moon's surface in patches; Lunar Stone is the bedrock.", x, y, w, TEXT);
-		y = iconLine(ctx, ModItems.PURPLE_LUNAR_BERRIES, "Gray and Purple Lunar Berries grow rarely in patches on the surface. Gray restores health over time, Purple gives a long Jump Boost. Plant them on any surface block.", x, y, w, TEXT);
+		y = iconLine(ctx, ModBlocks.PLASMA_CRYSTAL_ORE.asItem(), "Floating Asteroids: rocky islands of ore drifting 160+ blocks above the surface, some carrying a loot cache. Fly up with the jetpack to find them.", x, y, w, TEXT);
+		y = iconLine(ctx, ModItems.PURPLE_LUNAR_BERRIES, "Gray and Purple Lunar Berries grow rarely in patches on the surface. Gray restores health over time, Purple gives a long Jump Boost. Plant them on any surface block. Craft one of each together to make Space Jam, which gives both effects (and fills you up) in one.", x, y, w, TEXT);
 		y = iconLine(ctx, ModBlocks.ASTRIUM_BLOCK.asItem(), "Astrium Block: compact storage (9 ingots). Plasma Crystal Block: 9 crystals, glows. Lunar Alloy Block: found in structures, cannot be smelted into ingots.", x, y, w, TEXT);
 		return y;
 	}

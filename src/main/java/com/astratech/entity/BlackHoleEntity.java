@@ -22,7 +22,7 @@ import java.util.UUID;
 
 /** A short-lived singularity: drags every nearby mob inward and crushes them. Players are never affected. */
 public class BlackHoleEntity extends Entity {
-	private static final int LIFETIME = 120;
+	private static final int LIFETIME = 140;
 	private static final double RADIUS = 12.0;
 	private UUID ownerUuid;
 
@@ -48,10 +48,10 @@ public class BlackHoleEntity extends Entity {
 		}
 		Vec3d c = this.getPos();
 		if (this.age == 1) {
-			world.playSound(null, c.x, c.y, c.z, SoundEvents.BLOCK_END_PORTAL_SPAWN, SoundCategory.PLAYERS, 1.5f, 1.6f);
+			world.playSound(null, c.x, c.y, c.z, SoundEvents.BLOCK_BEACON_ACTIVATE, SoundCategory.PLAYERS, 1.5f, 0.5f);
 		}
-		if (this.age % 20 == 0) {
-			world.playSound(null, c.x, c.y, c.z, SoundEvents.ENTITY_ENDERMAN_STARE, SoundCategory.PLAYERS, 1.0f, 0.5f);
+		if (this.age % 40 == 0 && this.age < LIFETIME - 20) {
+			world.playSound(null, c.x, c.y, c.z, SoundEvents.BLOCK_BEACON_AMBIENT, SoundCategory.PLAYERS, 0.8f, 0.5f);
 		}
 		// visuals: dark core, inward-spiralling dust
 		world.spawnParticles(ParticleTypes.SQUID_INK, c.x, c.y, c.z, 6, 0.3, 0.3, 0.3, 0.0);

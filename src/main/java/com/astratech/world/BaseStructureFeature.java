@@ -65,7 +65,7 @@ public abstract class BaseStructureFeature extends Feature<DefaultFeatureConfig>
 		}
 
 		public void set(int x, int y, int z, BlockState state) {
-			if (this.inRange(x, z) && y >= 1 && y <= 125) {
+			if (this.inRange(x, z) && y >= 1 && y <= this.world.getTopY() - 3) {
 				this.world.setBlockState(new BlockPos(x, y, z), state, Block.NOTIFY_LISTENERS);
 			}
 		}

@@ -121,9 +121,20 @@ public final class GatewayTeleporter {
 		return null;
 	}
 
+	/** First solid ground below y=127, ignoring floating asteroids above the Moon's surface layer. */
+	private static int groundTop(ServerWorld world, int x, int z) {
+		for (int y = Math.min(world.getTopY() - 1, 127); y > world.getBottomY(); y--) {
+			BlockState s = world.getBlockState(new BlockPos(x, y, z));
+			if (!s.isAir() && !s.isReplaceable() && !s.isLiquid()) {
+				return y + 1;
+			}
+		}
+		return world.getTopY(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, x, z);
+	}
+
 	/** Builds a 7x7 landing pad with a working gateway on its north edge. Returns the pad centre (floor level). */
 	public static BlockPos buildReturnGateway(ServerWorld world, int x, int z) {
-		int floorY = world.getTopY(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, x, z);
+		int floorY = groundTop(world, x, z);
 		floorY = Math.max(world.getBottomY() + 6, Math.min(floorY, world.getTopY() - 10));
 		BlockState plating = ModBlocks.TECH_PLATING.getDefaultState();
 		BlockState lamp = ModBlocks.PLASMA_LAMP.getDefaultState();
