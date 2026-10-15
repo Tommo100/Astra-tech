@@ -21,7 +21,7 @@ public class RadarFeature extends BaseStructureFeature {
 		}
 		BlockState plating = ModBlocks.TECH_PLATING.getDefaultState();
 		BlockState lamp = ModBlocks.PLASMA_LAMP.getDefaultState();
-		BlockState astrium = ModBlocks.ASTRIUM_BLOCK.getDefaultState();
+		BlockState astrium = ModBlocks.LUNAR_ALLOY_BLOCK.getDefaultState();
 		BlockState stone = ModBlocks.LUNAR_STONE.getDefaultState();
 		BlockState white = Blocks.WHITE_CONCRETE.getDefaultState();
 		BlockState air = Blocks.AIR.getDefaultState();

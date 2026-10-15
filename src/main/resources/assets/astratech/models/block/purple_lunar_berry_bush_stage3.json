@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "astratech:block/purple_lunar_berry_bush_stage3"
+  }
+}

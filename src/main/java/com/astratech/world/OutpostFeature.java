@@ -71,7 +71,7 @@ public class OutpostFeature extends Feature<DefaultFeatureConfig> {
 		for (int[] l : lamps) {
 			world.setBlockState(new BlockPos(cx + l[0], floorY, cz + l[1]), lamp, Block.NOTIFY_LISTENERS);
 		}
-		world.setBlockState(new BlockPos(cx, floorY, cz), ModBlocks.ASTRIUM_BLOCK.getDefaultState(), Block.NOTIFY_LISTENERS);
+		world.setBlockState(new BlockPos(cx, floorY, cz), ModBlocks.LUNAR_ALLOY_BLOCK.getDefaultState(), Block.NOTIFY_LISTENERS);
 		BlockPos chestPos = new BlockPos(cx, floorY + 1, cz);
 		world.setBlockState(chestPos, Blocks.CHEST.getDefaultState(), Block.NOTIFY_LISTENERS);
 		LootableContainerBlockEntity.setLootTable(world, random, chestPos, new Identifier("astratech", "chests/outpost"));

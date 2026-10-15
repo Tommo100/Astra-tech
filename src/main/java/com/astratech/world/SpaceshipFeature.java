@@ -53,7 +53,7 @@ public class SpaceshipFeature extends BaseStructureFeature {
 		int axisY = base + 7;
 		BlockState plating = ModBlocks.TECH_PLATING.getDefaultState();
 		BlockState lamp = ModBlocks.PLASMA_LAMP.getDefaultState();
-		BlockState astrium = ModBlocks.ASTRIUM_BLOCK.getDefaultState();
+		BlockState astrium = ModBlocks.LUNAR_ALLOY_BLOCK.getDefaultState();
 		BlockState white = Blocks.WHITE_CONCRETE.getDefaultState();
 		BlockState trim = Blocks.CYAN_CONCRETE.getDefaultState();
 		BlockState seat = Blocks.LIGHT_GRAY_CONCRETE.getDefaultState();

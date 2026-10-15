@@ -355,6 +355,50 @@ public class NovaOvermindEntity extends HostileEntity {
 		}
 	}
 
+	private int deathTicks = 0;
+
+	/** Long death sequence: chained explosions while the machine powers down, then a final blast. */
+	@Override
+	protected void updatePostDeath() {
+		if (this.deathTicks < 100) {
+			this.deathTicks++;
+			this.setVelocity(Vec3d.ZERO);
+			if (this.getWorld() instanceof ServerWorld world) {
+				if (this.deathTicks == 1) {
+					world.playSound(null, this.getBlockPos(), SoundEvents.ENTITY_WARDEN_DEATH, SoundCategory.HOSTILE, 3.0f, 0.5f);
+				}
+				if (this.deathTicks % 4 == 0) {
+					double ox = (this.random.nextDouble() - 0.5) * 5.0;
+					double oy = (this.random.nextDouble() - 0.5) * 4.0;
+					double oz = (this.random.nextDouble() - 0.5) * 5.0;
+					double px = this.getX() + ox;
+					double py = this.getY() + 2.6 + oy;
+					double pz = this.getZ() + oz;
+					world.spawnParticles(ParticleTypes.EXPLOSION_EMITTER, px, py, pz, 1, 0.0, 0.0, 0.0, 0.0);
+					world.spawnParticles(ParticleTypes.FLAME, px, py, pz, 20, 0.6, 0.6, 0.6, 0.08);
+					world.playSound(null, px, py, pz, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.HOSTILE, 2.5f, 0.7f + this.random.nextFloat() * 0.5f);
+				}
+				world.spawnParticles(ParticleTypes.ELECTRIC_SPARK, this.getX(), this.getY() + 2.6, this.getZ(), 10, 2.0, 2.0, 2.0, 0.3);
+				world.spawnParticles(ParticleTypes.LARGE_SMOKE, this.getX(), this.getY() + 2.6, this.getZ(), 4, 1.8, 1.8, 1.8, 0.02);
+				if (this.deathTicks % 12 == 0) {
+					// power-down whine: falling pitch
+					float pitch = 1.5f - this.deathTicks * 0.012f;
+					world.playSound(null, this.getBlockPos(), SoundEvents.BLOCK_BEACON_DEACTIVATE, SoundCategory.HOSTILE, 3.0f, Math.max(0.3f, pitch));
+					world.playSound(null, this.getBlockPos(), SoundEvents.BLOCK_CONDUIT_DEACTIVATE, SoundCategory.HOSTILE, 3.0f, Math.max(0.3f, pitch - 0.2f));
+				}
+				if (this.deathTicks == 100) {
+					world.spawnParticles(ParticleTypes.EXPLOSION_EMITTER, this.getX(), this.getY() + 2.6, this.getZ(), 6, 2.0, 2.0, 2.0, 0.0);
+					world.spawnParticles(ParticleTypes.FLASH, this.getX(), this.getY() + 2.6, this.getZ(), 3, 1.0, 1.0, 1.0, 0.0);
+					world.playSound(null, this.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.HOSTILE, 5.0f, 0.5f);
+					world.playSound(null, this.getBlockPos(), SoundEvents.BLOCK_BEACON_DEACTIVATE, SoundCategory.HOSTILE, 5.0f, 0.3f);
+					this.deathTime = 19;
+				}
+			}
+			return;
+		}
+		super.updatePostDeath();
+	}
+
 	@Override
 	public void onStartedTrackingBy(ServerPlayerEntity player) {
 		super.onStartedTrackingBy(player);

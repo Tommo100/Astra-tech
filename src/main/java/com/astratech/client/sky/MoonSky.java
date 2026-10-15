@@ -39,7 +39,7 @@ public class MoonSky implements DimensionRenderingRegistry.SkyRenderer {
 			data[count * 4] = (float) (x * inv);
 			data[count * 4 + 1] = (float) (y * inv);
 			data[count * 4 + 2] = (float) (z * inv);
-			data[count * 4 + 3] = 0.30f + random.nextFloat() * random.nextFloat() * 1.1f;
+			data[count * 4 + 3] = 0.05f + random.nextFloat() * random.nextFloat() * 0.18f;
 			count++;
 		}
 		return data;

@@ -92,7 +92,7 @@ public class CodexScreen extends Screen {
 			new String[]{"220 health when deployed, Regeneration II aura within 8 blocks", "Shoots hostile creatures on sight", "Feed it a Plasma Crystal to repair it"}, 44));
 		mobs.add(new MobInfo(ModEntities.LUNAR_HOPPER, "Lunar Hopper", true,
 			"A gentle, long-eared creature that bounds across the dust in huge low-gravity leaps.",
-			new String[]{"Completely harmless", "Leaps three blocks high", "Flees from danger"}, 50));
+			new String[]{"Completely harmless, drops like a rabbit", "Follows you if you hold a Plasma Crystal", "Feed two a Plasma Crystal to breed a baby"}, 50));
 		mobs.add(new MobInfo(ModEntities.NOVA_OVERMIND, "Nova Overmind", false,
 			"The ancient AI that rules the Moon. Summoned only with a Quantum Core at a Summoning Terminal.",
 			new String[]{"500 health, three combat phases", "Orbital strikes, bolt fans, drone and sentinel reinforcements", "Drops Nova Cores"}, 11));
@@ -349,11 +349,12 @@ public class CodexScreen extends Screen {
 		y = heading(ctx, "Materials and blocks", x, y, CYAN);
 		y = iconLine(ctx, ModBlocks.ASTRIUM_ORE.asItem(), "Astrium Ore: drops Raw Astrium. Smelt into Astrium Ingots, the backbone of all Astral gear.", x, y, w, TEXT);
 		y = iconLine(ctx, ModBlocks.PLASMA_CRYSTAL_ORE.asItem(), "Plasma Crystal Ore: glowing deposits that drop Plasma Crystals (affected by Fortune).", x, y, w, TEXT);
-		y = iconLine(ctx, ModItems.NOVA_CORE, "Nova Core: dropped only by the Nova Overmind. Required for the Astral chestplate, blade and Pulse Blaster.", x, y, w, TEXT);
+		y = iconLine(ctx, ModItems.NOVA_CORE, "Nova Core: dropped only by the Nova Overmind. Required for the Astral chestplate, blade and Pulse Blaster. Right-click to throw it: it collapses into a black hole that drags in and crushes mobs (never players).", x, y, w, TEXT);
 		y = iconLine(ctx, ModBlocks.TECH_PLATING.asItem(), "Tech Plating: armoured hull panels (2 Astrium + 2 Iron makes 4).", x, y, w, TEXT);
 		y = iconLine(ctx, ModBlocks.PLASMA_LAMP.asItem(), "Plasma Lamp: the brightest light source in the mod.", x, y, w, TEXT);
 		y = iconLine(ctx, ModBlocks.LUNAR_REGOLITH.asItem(), "Lunar Regolith, Dust, Gravel, Cracked and Ashen Regolith, and Mare Basalt cover the Moon's surface in patches; Lunar Stone is the bedrock.", x, y, w, TEXT);
-		y = iconLine(ctx, ModBlocks.ASTRIUM_BLOCK.asItem(), "Astrium Block: compact storage (9 ingots).", x, y, w, TEXT);
+		y = iconLine(ctx, ModItems.PURPLE_LUNAR_BERRIES, "Gray and Purple Lunar Berries grow rarely in patches on the surface. Gray restores health over time, Purple gives a long Jump Boost. Plant them on any surface block.", x, y, w, TEXT);
+		y = iconLine(ctx, ModBlocks.ASTRIUM_BLOCK.asItem(), "Astrium Block: compact storage (9 ingots). Plasma Crystal Block: 9 crystals, glows. Lunar Alloy Block: found in structures, cannot be smelted into ingots.", x, y, w, TEXT);
 		return y;
 	}
 
@@ -512,6 +513,8 @@ public class CodexScreen extends Screen {
 		list.add(new ItemStack(ModBlocks.ASTRIUM_ORE));
 		list.add(new ItemStack(ModBlocks.PLASMA_CRYSTAL_ORE));
 		list.add(new ItemStack(ModBlocks.ASTRIUM_BLOCK));
+		list.add(new ItemStack(ModBlocks.PLASMA_CRYSTAL_BLOCK));
+		list.add(new ItemStack(ModBlocks.LUNAR_ALLOY_BLOCK));
 		list.add(new ItemStack(ModBlocks.TECH_PLATING));
 		list.add(new ItemStack(ModBlocks.PLASMA_LAMP));
 		list.add(new ItemStack(ModBlocks.GATEWAY_FRAME));

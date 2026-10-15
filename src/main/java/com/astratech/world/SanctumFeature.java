@@ -21,7 +21,7 @@ public class SanctumFeature extends BaseStructureFeature {
 		}
 		BlockState plating = ModBlocks.TECH_PLATING.getDefaultState();
 		BlockState lamp = ModBlocks.PLASMA_LAMP.getDefaultState();
-		BlockState astrium = ModBlocks.ASTRIUM_BLOCK.getDefaultState();
+		BlockState astrium = ModBlocks.LUNAR_ALLOY_BLOCK.getDefaultState();
 		BlockState stone = ModBlocks.LUNAR_STONE.getDefaultState();
 		BlockState air = Blocks.AIR.getDefaultState();
 		int cx = b.cx;

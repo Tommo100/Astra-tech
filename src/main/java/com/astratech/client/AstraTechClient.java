@@ -68,6 +68,8 @@ public class AstraTechClient implements ClientModInitializer {
 		EntityRendererRegistry.register(ModEntities.LUNAR_HOPPER, LunarHopperRenderer::new);
 		EntityRendererRegistry.register(ModEntities.NOVA_OVERMIND, NovaOvermindRenderer::new);
 		EntityRendererRegistry.register(ModEntities.METEOR, context -> new FlyingItemEntityRenderer<>(context, 5.0f, true));
+		EntityRendererRegistry.register(ModEntities.THROWN_NOVA_CORE, context -> new FlyingItemEntityRenderer<>(context, 1.4f, true));
+		EntityRendererRegistry.register(ModEntities.BLACK_HOLE, net.minecraft.client.render.entity.EmptyEntityRenderer::new);
 		EntityRendererRegistry.register(ModEntities.PLASMA_ORB, context -> new FlyingItemEntityRenderer<>(context, 4.5f, true));
 		EntityRendererRegistry.register(ModEntities.PLASMA_BOLT, context -> new FlyingItemEntityRenderer<>(context, 1.6f, true));
 

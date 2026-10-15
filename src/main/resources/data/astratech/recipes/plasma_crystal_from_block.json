@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "astratech:plasma_crystal_block"
+    }
+  ],
+  "result": {
+    "item": "astratech:plasma_crystal",
+    "count": 9
+  }
+}

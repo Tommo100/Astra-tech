@@ -5,6 +5,8 @@
     "astratech:astrium_block",
     "astratech:tech_plating",
     "astratech:gateway_frame",
-    "astratech:summoning_terminal"
+    "astratech:summoning_terminal",
+    "astratech:lunar_alloy_block",
+    "astratech:plasma_crystal_block"
   ]
 }

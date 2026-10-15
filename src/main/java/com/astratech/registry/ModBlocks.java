@@ -25,6 +25,10 @@ public final class ModBlocks {
 		new Block(FabricBlockSettings.create().mapColor(MapColor.STONE_GRAY).strength(1.1f).sounds(BlockSoundGroup.SAND)));
 	public static final Block ASHEN_REGOLITH = register("ashen_regolith",
 		new Block(FabricBlockSettings.create().mapColor(MapColor.GRAY).strength(1.0f).sounds(BlockSoundGroup.SAND)));
+	public static final Block GRAY_LUNAR_BERRY_BUSH = registerNoItem("gray_lunar_berry_bush",
+		new com.astratech.block.LunarBerryBushBlock(FabricBlockSettings.create().mapColor(MapColor.GRAY).noCollision().ticksRandomly().sounds(BlockSoundGroup.SWEET_BERRY_BUSH).pistonBehavior(net.minecraft.block.piston.PistonBehavior.DESTROY), () -> ModItems.GRAY_LUNAR_BERRIES));
+	public static final Block PURPLE_LUNAR_BERRY_BUSH = registerNoItem("purple_lunar_berry_bush",
+		new com.astratech.block.LunarBerryBushBlock(FabricBlockSettings.create().mapColor(MapColor.PURPLE).noCollision().ticksRandomly().sounds(BlockSoundGroup.SWEET_BERRY_BUSH).pistonBehavior(net.minecraft.block.piston.PistonBehavior.DESTROY), () -> ModItems.PURPLE_LUNAR_BERRIES));
 	public static final Block LUNAR_STONE = register("lunar_stone",
 		new Block(FabricBlockSettings.create().mapColor(MapColor.STONE_GRAY).strength(3.0f, 8.0f).requiresTool()));
 	public static final Block ASTRIUM_ORE = register("astrium_ore",
@@ -33,6 +37,10 @@ public final class ModBlocks {
 		new Block(FabricBlockSettings.create().mapColor(MapColor.STONE_GRAY).strength(6.0f, 9.0f).requiresTool().luminance(s -> 9)));
 	public static final Block ASTRIUM_BLOCK = register("astrium_block",
 		new Block(FabricBlockSettings.create().mapColor(MapColor.IRON_GRAY).strength(7.0f, 12.0f).requiresTool().sounds(BlockSoundGroup.NETHERITE)));
+	public static final Block LUNAR_ALLOY_BLOCK = register("lunar_alloy_block",
+		new Block(FabricBlockSettings.create().mapColor(MapColor.IRON_GRAY).strength(6.0f, 10.0f).requiresTool().sounds(BlockSoundGroup.NETHERITE)));
+	public static final Block PLASMA_CRYSTAL_BLOCK = register("plasma_crystal_block",
+		new Block(FabricBlockSettings.create().mapColor(MapColor.CYAN).strength(4.0f, 8.0f).requiresTool().luminance(s -> 10).sounds(BlockSoundGroup.AMETHYST_BLOCK)));
 	public static final Block TECH_PLATING = register("tech_plating",
 		new Block(FabricBlockSettings.create().mapColor(MapColor.IRON_GRAY).strength(5.0f, 10.0f).requiresTool().sounds(BlockSoundGroup.NETHERITE)));
 	public static final Block PLASMA_LAMP = register("plasma_lamp",

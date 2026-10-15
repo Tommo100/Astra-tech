@@ -17,6 +17,13 @@ public class LunarHopperRenderer extends MobEntityRenderer<LunarHopperEntity, Lu
 	}
 
 	@Override
+	protected void scale(LunarHopperEntity entity, net.minecraft.client.util.math.MatrixStack matrices, float amount) {
+		if (entity.isBaby()) {
+			matrices.scale(0.55f, 0.55f, 0.55f);
+		}
+	}
+
+	@Override
 	public Identifier getTexture(LunarHopperEntity entity) {
 		return TEXTURE;
 	}

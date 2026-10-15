@@ -8,6 +8,7 @@ import com.astratech.item.AstralPickaxeItem;
 import com.astratech.item.AstralShovelItem;
 import com.astratech.item.AstralSwordItem;
 import com.astratech.item.MeteorHammerItem;
+import com.astratech.item.NovaCoreItem;
 import com.astratech.item.IonIgniterItem;
 import com.astratech.item.PulseBlasterItem;
 import com.astratech.item.RemoteControllerItem;
@@ -40,7 +41,7 @@ public final class ModItems {
 	public static final Item PLASMA_ORB = Registry.register(Registries.ITEM, new Identifier("astratech", "plasma_orb"), new Item(new Item.Settings()));
 	public static final Item ASTRIUM_INGOT = item("astrium_ingot", new Item(new Item.Settings()));
 	public static final Item PLASMA_CRYSTAL = item("plasma_crystal", new Item(new Item.Settings()));
-	public static final Item NOVA_CORE = item("nova_core", new Item(new Item.Settings().rarity(Rarity.EPIC).fireproof()));
+	public static final Item NOVA_CORE = item("nova_core", new NovaCoreItem(new Item.Settings().rarity(Rarity.EPIC).fireproof()));
 	public static final Item QUANTUM_CORE = item("quantum_core", new Item(new Item.Settings().rarity(Rarity.RARE)));
 
 	// Utility
@@ -50,6 +51,12 @@ public final class ModItems {
 	public static final Item REMOTE_CONTROLLER = item("remote_controller", new RemoteControllerItem(new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
 
 	// Weapons and tools
+	public static final Item GRAY_LUNAR_BERRIES = item("gray_lunar_berries", new net.minecraft.item.AliasedBlockItem(ModBlocks.GRAY_LUNAR_BERRY_BUSH,
+		new Item.Settings().food(new net.minecraft.item.FoodComponent.Builder().hunger(3).saturationModifier(0.4f)
+			.statusEffect(new net.minecraft.entity.effect.StatusEffectInstance(net.minecraft.entity.effect.StatusEffects.REGENERATION, 100, 0), 1.0f).snack().build())));
+	public static final Item PURPLE_LUNAR_BERRIES = item("purple_lunar_berries", new net.minecraft.item.AliasedBlockItem(ModBlocks.PURPLE_LUNAR_BERRY_BUSH,
+		new Item.Settings().food(new net.minecraft.item.FoodComponent.Builder().hunger(2).saturationModifier(0.3f)
+			.statusEffect(new net.minecraft.entity.effect.StatusEffectInstance(net.minecraft.entity.effect.StatusEffects.JUMP_BOOST, 400, 1), 1.0f).snack().build())));
 	public static final Item METEOR_HAMMER = item("meteor_hammer", new MeteorHammerItem(new Item.Settings().rarity(Rarity.EPIC).fireproof()));
 	public static final Item ASTRAL_BLADE = item("astral_blade", new AstralSwordItem(new Item.Settings().rarity(Rarity.EPIC).fireproof()));
 	public static final Item PULSE_BLASTER = item("pulse_blaster", new PulseBlasterItem(new Item.Settings().maxCount(1).maxDamage(2400).rarity(Rarity.EPIC).fireproof()));
@@ -92,6 +99,8 @@ public final class ModItems {
 			entries.add(ModBlocks.ASTRIUM_ORE);
 			entries.add(ModBlocks.PLASMA_CRYSTAL_ORE);
 			entries.add(ModBlocks.ASTRIUM_BLOCK);
+			entries.add(ModBlocks.PLASMA_CRYSTAL_BLOCK);
+			entries.add(ModBlocks.LUNAR_ALLOY_BLOCK);
 			entries.add(ModBlocks.TECH_PLATING);
 			entries.add(ModBlocks.PLASMA_LAMP);
 			entries.add(ModBlocks.GATEWAY_FRAME);

@@ -30,7 +30,10 @@
     ],
     [],
     [],
-    [],
+    [
+      "astratech:gray_berry_patch",
+      "astratech:purple_berry_patch"
+    ],
     []
   ],
   "creature_spawn_probability": 0.12,

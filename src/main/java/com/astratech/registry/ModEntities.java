@@ -5,7 +5,9 @@ import com.astratech.entity.LunarHopperEntity;
 import com.astratech.entity.LunarSentinelEntity;
 import com.astratech.entity.NovaOvermindEntity;
 import com.astratech.entity.PlasmaBoltEntity;
+import com.astratech.entity.BlackHoleEntity;
 import com.astratech.entity.MeteorEntity;
+import com.astratech.entity.ThrownNovaCoreEntity;
 import com.astratech.entity.PlasmaOrbEntity;
 import com.astratech.entity.PlasmaDroneEntity;
 import com.astratech.entity.VoidStalkerEntity;
@@ -41,6 +43,21 @@ public final class ModEntities {
 		FabricEntityTypeBuilder.<MeteorEntity>create(SpawnGroup.MISC, MeteorEntity::new)
 			.dimensions(EntityDimensions.fixed(1.2f, 1.2f))
 			.trackRangeBlocks(128).trackedUpdateRate(2).forceTrackedVelocityUpdates(true)
+			.build());
+
+	public static final EntityType<ThrownNovaCoreEntity> THROWN_NOVA_CORE = Registry.register(Registries.ENTITY_TYPE,
+		new Identifier("astratech", "thrown_nova_core"),
+		FabricEntityTypeBuilder.<ThrownNovaCoreEntity>create(SpawnGroup.MISC, ThrownNovaCoreEntity::new)
+			.dimensions(EntityDimensions.fixed(0.4f, 0.4f))
+			.trackRangeBlocks(64).trackedUpdateRate(10)
+			.build());
+
+	public static final EntityType<BlackHoleEntity> BLACK_HOLE = Registry.register(Registries.ENTITY_TYPE,
+		new Identifier("astratech", "black_hole"),
+		FabricEntityTypeBuilder.<BlackHoleEntity>create(SpawnGroup.MISC, BlackHoleEntity::new)
+			.dimensions(EntityDimensions.fixed(1.0f, 1.0f))
+			.fireImmune()
+			.trackRangeBlocks(96).trackedUpdateRate(10)
 			.build());
 
 	public static final EntityType<LunarSentinelEntity> LUNAR_SENTINEL = Registry.register(Registries.ENTITY_TYPE,
