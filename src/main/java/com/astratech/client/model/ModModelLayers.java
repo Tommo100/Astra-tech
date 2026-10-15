@@ -7,6 +7,7 @@ public final class ModModelLayers {
 	public static final EntityModelLayer PLASMA_DRONE = layer("plasma_drone");
 	public static final EntityModelLayer ASTRO_BOT = layer("astro_bot");
 	public static final EntityModelLayer LUNAR_HOPPER = layer("lunar_hopper");
+	public static final EntityModelLayer ASTRAL_GEAR = layer("astral_gear");
 	public static final EntityModelLayer NOVA_OVERMIND = layer("nova_overmind");
 
 	private ModModelLayers() {

@@ -45,5 +45,13 @@
   "key.astratech.boost": "Jetpack Forward Boost",
   "key.categories.astratech": "Astra Tech",
   "item.astratech.plasma_orb": "Plasma Orb",
-  "entity.astratech.plasma_orb": "Plasma Orb"
+  "entity.astratech.plasma_orb": "Plasma Orb",
+  "block.astratech.lunar_dust": "Lunar Dust",
+  "block.astratech.lunar_gravel": "Lunar Gravel",
+  "block.astratech.mare_basalt": "Mare Basalt",
+  "block.astratech.cracked_regolith": "Cracked Regolith",
+  "block.astratech.ashen_regolith": "Ashen Regolith",
+  "item.astratech.meteor_hammer": "Meteor Hammer",
+  "item.astratech.meteor": "Meteor",
+  "entity.astratech.meteor": "Meteor"
 }

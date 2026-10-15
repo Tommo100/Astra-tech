@@ -15,6 +15,16 @@ import net.minecraft.util.Identifier;
 public final class ModBlocks {
 	public static final Block LUNAR_REGOLITH = register("lunar_regolith",
 		new Block(FabricBlockSettings.create().mapColor(MapColor.STONE_GRAY).strength(1.0f).sounds(BlockSoundGroup.SAND)));
+	public static final Block LUNAR_DUST = register("lunar_dust",
+		new Block(FabricBlockSettings.create().mapColor(MapColor.LIGHT_GRAY).strength(0.8f).sounds(BlockSoundGroup.SAND)));
+	public static final Block LUNAR_GRAVEL = register("lunar_gravel",
+		new Block(FabricBlockSettings.create().mapColor(MapColor.STONE_GRAY).strength(1.0f).sounds(BlockSoundGroup.GRAVEL)));
+	public static final Block MARE_BASALT = register("mare_basalt",
+		new Block(FabricBlockSettings.create().mapColor(MapColor.GRAY).strength(1.6f, 4.0f).sounds(BlockSoundGroup.BASALT)));
+	public static final Block CRACKED_REGOLITH = register("cracked_regolith",
+		new Block(FabricBlockSettings.create().mapColor(MapColor.STONE_GRAY).strength(1.1f).sounds(BlockSoundGroup.SAND)));
+	public static final Block ASHEN_REGOLITH = register("ashen_regolith",
+		new Block(FabricBlockSettings.create().mapColor(MapColor.GRAY).strength(1.0f).sounds(BlockSoundGroup.SAND)));
 	public static final Block LUNAR_STONE = register("lunar_stone",
 		new Block(FabricBlockSettings.create().mapColor(MapColor.STONE_GRAY).strength(3.0f, 8.0f).requiresTool()));
 	public static final Block ASTRIUM_ORE = register("astrium_ore",
@@ -33,6 +43,12 @@ public final class ModBlocks {
 		new LunarPortalBlock(FabricBlockSettings.create().mapColor(MapColor.PURPLE).noCollision().strength(-1.0f).luminance(s -> 12).nonOpaque().dropsNothing()));
 	public static final Block SUMMONING_TERMINAL = register("summoning_terminal",
 		new SummoningTerminalBlock(FabricBlockSettings.create().mapColor(MapColor.IRON_GRAY).strength(6.0f, 12.0f).requiresTool().luminance(s -> 8).sounds(BlockSoundGroup.NETHERITE)));
+
+	/** True for any of the Moon's natural surface blocks (mobs may spawn on them). */
+	public static boolean isMoonSurface(net.minecraft.block.BlockState state) {
+		return state.isOf(LUNAR_REGOLITH) || state.isOf(LUNAR_DUST) || state.isOf(LUNAR_GRAVEL)
+			|| state.isOf(MARE_BASALT) || state.isOf(CRACKED_REGOLITH) || state.isOf(ASHEN_REGOLITH);
+	}
 
 	private ModBlocks() {
 	}

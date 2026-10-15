@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "astratech:lunar_regolith"
+    "astratech:lunar_regolith",
+    "astratech:lunar_dust",
+    "astratech:lunar_gravel",
+    "astratech:cracked_regolith",
+    "astratech:ashen_regolith"
   ]
 }

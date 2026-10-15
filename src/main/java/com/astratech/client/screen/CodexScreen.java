@@ -352,7 +352,7 @@ public class CodexScreen extends Screen {
 		y = iconLine(ctx, ModItems.NOVA_CORE, "Nova Core: dropped only by the Nova Overmind. Required for the Astral chestplate, blade and Pulse Blaster.", x, y, w, TEXT);
 		y = iconLine(ctx, ModBlocks.TECH_PLATING.asItem(), "Tech Plating: armoured hull panels (2 Astrium + 2 Iron makes 4).", x, y, w, TEXT);
 		y = iconLine(ctx, ModBlocks.PLASMA_LAMP.asItem(), "Plasma Lamp: the brightest light source in the mod.", x, y, w, TEXT);
-		y = iconLine(ctx, ModBlocks.LUNAR_REGOLITH.asItem(), "Lunar Regolith and Lunar Stone: the Moon's dust and bedrock.", x, y, w, TEXT);
+		y = iconLine(ctx, ModBlocks.LUNAR_REGOLITH.asItem(), "Lunar Regolith, Dust, Gravel, Cracked and Ashen Regolith, and Mare Basalt cover the Moon's surface in patches; Lunar Stone is the bedrock.", x, y, w, TEXT);
 		y = iconLine(ctx, ModBlocks.ASTRIUM_BLOCK.asItem(), "Astrium Block: compact storage (9 ingots).", x, y, w, TEXT);
 		return y;
 	}
@@ -446,6 +446,7 @@ public class CodexScreen extends Screen {
 
 		y = heading(ctx, "Weapons and tools", x, y, CYAN);
 		y = gearEntry(ctx, ModItems.ASTRAL_BLADE, "Plasma Blade", "Oversized plasma sword. Hits slow the target and add 4 arc damage. Right-click: Photon Lance, a piercing laser beam up to 36 blocks that deals 24 damage and sets targets alight (2.5 second cooldown).", "2 Astrium Ingot above 1 Nova Core", x, y, w);
+		y = gearEntry(ctx, ModItems.METEOR_HAMMER, "Meteor Hammer", "Heavy hammer: huge damage, slows and knocks back. Hold right-click to charge (the impact zone is marked where you look), release to call down 3 meteors that explode for up to 34 damage each (10 second cooldown).", "6 Astrium Ingot, 1 Nova Core, 1 Stick", x, y, w);
 		y = gearEntry(ctx, ModItems.PULSE_BLASTER, "Pulse Blaster", "Tap right-click for fast plasma bolts (16 damage). Hold right-click to charge, release for a huge Plasma Orb that deals 40 damage and explodes for 30 in a 5 block blast. 2400 charges.", "Astrium Ingots and a Plasma Crystal around 1 Nova Core", x, y, w);
 		y = gearEntry(ctx, ModItems.REMOTE_CONTROLLER, "Companion Remote", "Deploys your own Astro Bot that follows you, heals you and fights whatever attacks you or that you attack. Use again to recall it, sneak + use to dismiss it.", "Astrium Ingots, Plasma Crystal, Redstone and a Nova Core", x, y, w);
 		y = gearEntry(ctx, ModItems.ASTRAL_PICKAXE, "Quantum Pickaxe", "Mines faster than netherite and breaks a 3x3 area of anything a pickaxe can mine. Sneak for single blocks, or sneak on ore to vein-mine the whole deposit.", "2 Astrium Ingot, 1 Plasma Crystal, 2 Sticks", x, y, w);
@@ -483,8 +484,8 @@ public class CodexScreen extends Screen {
 
 		y = heading(ctx, "Phases", x, y, BAD);
 		y = text(ctx, "Phase 1: aimed plasma bolts and telegraphed orbital strikes on every player.", x, y, w, TEXT);
-		y = text(ctx, "Phase 2 (below 66%): bolt fans, extra strikes, and Plasma Drone reinforcements.", x, y, w, TEXT);
-		y = text(ctx, "Phase 3 (below 33%): radial bolt rings, gravity pulses that hurl you away, Lunar Sentinel reinforcements and faster strikes.", x, y, w, TEXT) + 6;
+		y = text(ctx, "Phase 2 (below 66%, turns red): the Overmind drops its guns and charges at you in a melee rush. Watch for the wind-up flare, then dodge sideways. Strikes and Plasma Drone reinforcements continue.", x, y, w, TEXT);
+		y = text(ctx, "Phase 3 (below 33%, turns violet): bolt fans, radial bolt rings, gravity pulses that hurl you away, Lunar Sentinel reinforcements and faster strikes.", x, y, w, TEXT) + 6;
 
 		y = heading(ctx, "How to summon", x, y, CYAN);
 		y = iconLine(ctx, ModItems.QUANTUM_CORE, "Quantum Core: Plasma Crystals in the corners, Astrium Ingots on the edges, a Netherite Ingot in the centre.", x, y, w, TEXT);
@@ -502,6 +503,11 @@ public class CodexScreen extends Screen {
 			}
 		}
 		list.add(new ItemStack(ModBlocks.LUNAR_REGOLITH));
+		list.add(new ItemStack(ModBlocks.LUNAR_DUST));
+		list.add(new ItemStack(ModBlocks.LUNAR_GRAVEL));
+		list.add(new ItemStack(ModBlocks.CRACKED_REGOLITH));
+		list.add(new ItemStack(ModBlocks.ASHEN_REGOLITH));
+		list.add(new ItemStack(ModBlocks.MARE_BASALT));
 		list.add(new ItemStack(ModBlocks.LUNAR_STONE));
 		list.add(new ItemStack(ModBlocks.ASTRIUM_ORE));
 		list.add(new ItemStack(ModBlocks.PLASMA_CRYSTAL_ORE));

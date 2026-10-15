@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 
 /** Large charged projectile from the Pulse Blaster: heavy direct hit plus an area explosion (no block damage). */
 public class PlasmaOrbEntity extends PlasmaBoltEntity {
-	private static final double BLAST_RADIUS = 5.0;
+	private double blastRadius = 5.0;
 	private float blastDamage = 30.0f;
 
 	public PlasmaOrbEntity(EntityType<? extends PlasmaOrbEntity> type, World world) {
@@ -27,6 +27,14 @@ public class PlasmaOrbEntity extends PlasmaBoltEntity {
 
 	public PlasmaOrbEntity(World world, LivingEntity owner) {
 		super(ModEntities.PLASMA_ORB, world, owner);
+	}
+
+	protected PlasmaOrbEntity(EntityType<? extends PlasmaOrbEntity> type, World world, LivingEntity owner) {
+		super(type, world, owner);
+	}
+
+	public void setBlastRadius(double blastRadius) {
+		this.blastRadius = blastRadius;
 	}
 
 	public void setBlastDamage(float blastDamage) {
@@ -68,13 +76,13 @@ public class PlasmaOrbEntity extends PlasmaBoltEntity {
 		world.playSound(null, c.x, c.y, c.z, SoundEvents.BLOCK_BEACON_POWER_SELECT, SoundCategory.PLAYERS, 1.5f, 1.6f);
 		Entity owner = this.getOwner();
 		LivingEntity attacker = owner instanceof LivingEntity living ? living : null;
-		Box box = new Box(c.x - BLAST_RADIUS, c.y - BLAST_RADIUS, c.z - BLAST_RADIUS, c.x + BLAST_RADIUS, c.y + BLAST_RADIUS, c.z + BLAST_RADIUS);
+		Box box = new Box(c.x - this.blastRadius, c.y - this.blastRadius, c.z - this.blastRadius, c.x + this.blastRadius, c.y + this.blastRadius, c.z + this.blastRadius);
 		for (LivingEntity victim : world.getEntitiesByClass(LivingEntity.class, box, e -> e.isAlive() && e != owner && !(e instanceof AstroBotEntity) && !(e instanceof PlayerEntity p && owner instanceof AstroBotEntity))) {
 			double dist = victim.getPos().add(0.0, victim.getHeight() / 2.0, 0.0).distanceTo(c);
-			if (dist > BLAST_RADIUS) {
+			if (dist > this.blastRadius) {
 				continue;
 			}
-			float scale = (float) (1.0 - 0.5 * dist / BLAST_RADIUS);
+			float scale = (float) (1.0 - 0.5 * dist / this.blastRadius);
 			victim.damage(this.getDamageSources().mobProjectile(this, attacker), this.blastDamage * scale);
 			Vec3d push = victim.getPos().subtract(c).normalize().multiply(0.9).add(0.0, 0.4, 0.0);
 			victim.addVelocity(push.x, push.y, push.z);

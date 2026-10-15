@@ -42,6 +42,11 @@ public class NovaOvermindEntity extends HostileEntity {
 	private int minionCooldown = 300;
 	private int pulseCooldown = 140;
 	private double orbitAngle = 0.0;
+	// Phase 2 melee charge: 0 = stalking, 1 = wind-up, 2 = charging, 3 = recovering
+	private int chargeState = 0;
+	private int chargeTimer = 60;
+	private Vec3d chargeDir = Vec3d.ZERO;
+	private boolean chargeHit = false;
 	private final List<Vec3d> strikePositions = new ArrayList<>();
 	private final List<Integer> strikeTimers = new ArrayList<>();
 
@@ -102,6 +107,8 @@ public class NovaOvermindEntity extends HostileEntity {
 	protected void mobTick() {
 		super.mobTick();
 		this.bossBar.setPercent(this.getHealth() / this.getMaxHealth());
+		int barPhase = this.getPhase();
+		this.bossBar.setColor(barPhase == 1 ? BossBar.Color.BLUE : (barPhase == 2 ? BossBar.Color.RED : BossBar.Color.PURPLE));
 		if (!(this.getWorld() instanceof ServerWorld world)) {
 			return;
 		}
@@ -119,7 +126,12 @@ public class NovaOvermindEntity extends HostileEntity {
 				this.heal(4.0f);
 			}
 		} else {
-			this.orbit(target, phase);
+			if (phase == 2) {
+				this.meleePhase(world, target);
+			} else {
+				this.chargeState = 0;
+				this.orbit(target, phase);
+			}
 			this.getLookControl().lookAt(target, 30.0f, 30.0f);
 			this.runAttacks(world, target, phase);
 		}
@@ -129,18 +141,77 @@ public class NovaOvermindEntity extends HostileEntity {
 	private void summonSequence(ServerWorld world) {
 		this.summonTicks--;
 		this.setVelocity(Vec3d.ZERO);
-		world.spawnParticles(ParticleTypes.END_ROD, this.getX(), this.getY() + 1.3, this.getZ(), 14, 2.0, 2.0, 2.0, 0.15);
-		world.spawnParticles(ParticleTypes.ELECTRIC_SPARK, this.getX(), this.getY() + 1.3, this.getZ(), 10, 1.5, 1.5, 1.5, 0.4);
+		world.spawnParticles(ParticleTypes.END_ROD, this.getX(), this.getY() + 2.6, this.getZ(), 14, 2.0, 2.0, 2.0, 0.15);
+		world.spawnParticles(ParticleTypes.ELECTRIC_SPARK, this.getX(), this.getY() + 2.6, this.getZ(), 10, 1.5, 1.5, 1.5, 0.4);
 		if (this.summonTicks == 119) {
 			world.playSound(null, this.getBlockPos(), SoundEvents.ENTITY_WITHER_SPAWN, SoundCategory.HOSTILE, 3.0f, 1.6f);
 		}
 		if (this.summonTicks == 0) {
-			world.spawnParticles(ParticleTypes.EXPLOSION_EMITTER, this.getX(), this.getY() + 1.3, this.getZ(), 1, 0.0, 0.0, 0.0, 0.0);
+			world.spawnParticles(ParticleTypes.EXPLOSION_EMITTER, this.getX(), this.getY() + 2.6, this.getZ(), 1, 0.0, 0.0, 0.0, 0.0);
 			world.playSound(null, this.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.HOSTILE, 3.0f, 0.8f);
 			for (PlayerEntity player : world.getEntitiesByClass(PlayerEntity.class, this.getBoundingBox().expand(10.0), p -> true)) {
 				double dx = player.getX() - this.getX();
 				double dz = player.getZ() - this.getZ();
 				player.takeKnockback(1.5, -dx, -dz);
+			}
+		}
+	}
+
+	/** Phase 2: the Overmind drops the guns and hurls itself at its target. */
+	private void meleePhase(ServerWorld world, LivingEntity target) {
+		Vec3d center = this.getPos().add(0.0, 2.6, 0.0);
+		switch (this.chargeState) {
+			case 0 -> {
+				// stalk: hover close above the target
+				Vec3d desired = target.getPos().add(0.0, 3.5, 0.0);
+				Vec3d diff = desired.subtract(this.getPos());
+				Vec3d push = diff.length() > 6.0 ? diff.normalize().multiply(0.55) : Vec3d.ZERO;
+				this.setVelocity(this.getVelocity().multiply(0.7).add(push.multiply(0.3)));
+				if (--this.chargeTimer <= 0 && this.canSee(target)) {
+					this.chargeState = 1;
+					this.chargeTimer = 28;
+					world.playSound(null, this.getBlockPos(), SoundEvents.ENTITY_WARDEN_ROAR, SoundCategory.HOSTILE, 3.0f, 1.3f);
+				}
+			}
+			case 1 -> {
+				// wind-up: freeze, glow and lock on
+				this.setVelocity(this.getVelocity().multiply(0.3));
+				world.spawnParticles(ParticleTypes.FLAME, center.x, center.y, center.z, 12, 1.8, 1.8, 1.8, 0.05);
+				world.spawnParticles(ParticleTypes.ELECTRIC_SPARK, center.x, center.y, center.z, 8, 2.0, 2.0, 2.0, 0.3);
+				if (--this.chargeTimer <= 0) {
+					Vec3d aim = target.getPos().add(0.0, target.getHeight() * 0.5, 0.0).subtract(center);
+					this.chargeDir = aim.lengthSquared() < 0.01 ? new Vec3d(0.0, 0.0, 1.0) : aim.normalize();
+					this.chargeState = 2;
+					this.chargeTimer = 22;
+					this.chargeHit = false;
+					world.playSound(null, this.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.HOSTILE, 2.0f, 1.6f);
+				}
+			}
+			case 2 -> {
+				this.setVelocity(this.chargeDir.multiply(1.6));
+				world.spawnParticles(ParticleTypes.FLAME, center.x, center.y, center.z, 20, 1.6, 1.6, 1.6, 0.02);
+				world.spawnParticles(ParticleTypes.LARGE_SMOKE, center.x, center.y, center.z, 6, 1.4, 1.4, 1.4, 0.02);
+				if (!this.chargeHit) {
+					for (PlayerEntity player : world.getEntitiesByClass(PlayerEntity.class, this.getBoundingBox().expand(1.0), p -> p.isAlive() && !p.isSpectator())) {
+						player.damage(this.getDamageSources().mobAttack(this), 16.0f);
+						player.takeKnockback(2.2, -this.chargeDir.x, -this.chargeDir.z);
+						player.velocityModified = true;
+						this.chargeHit = true;
+						world.playSound(null, player.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.HOSTILE, 2.0f, 0.9f);
+						world.spawnParticles(ParticleTypes.EXPLOSION, player.getX(), player.getBodyY(0.5), player.getZ(), 4, 0.5, 0.5, 0.5, 0.0);
+					}
+				}
+				if (--this.chargeTimer <= 0 || this.horizontalCollision || this.verticalCollision || this.chargeHit) {
+					this.chargeState = 3;
+					this.chargeTimer = 35;
+				}
+			}
+			default -> {
+				this.setVelocity(this.getVelocity().multiply(0.8));
+				if (--this.chargeTimer <= 0) {
+					this.chargeState = 0;
+					this.chargeTimer = 40;
+				}
 			}
 		}
 	}
@@ -160,7 +231,7 @@ public class NovaOvermindEntity extends HostileEntity {
 	}
 
 	private void runAttacks(ServerWorld world, LivingEntity target, int phase) {
-		if (--this.boltCooldown <= 0) {
+		if (phase != 2 && --this.boltCooldown <= 0) {
 			this.boltCooldown = phase == 1 ? 30 : (phase == 2 ? 24 : 18);
 			if (this.canSee(target)) {
 				this.fireBolts(world, target, phase);
@@ -181,10 +252,10 @@ public class NovaOvermindEntity extends HostileEntity {
 	}
 
 	private void fireBolts(ServerWorld world, LivingEntity target, int phase) {
-		Vec3d aim = new Vec3d(target.getX() - this.getX(), target.getBodyY(0.5) - (this.getY() + 1.3), target.getZ() - this.getZ());
+		Vec3d aim = new Vec3d(target.getX() - this.getX(), target.getBodyY(0.5) - (this.getY() + 2.6), target.getZ() - this.getZ());
 		world.playSound(null, this.getBlockPos(), SoundEvents.ENTITY_BLAZE_SHOOT, SoundCategory.HOSTILE, 2.0f, 0.6f);
 		this.shoot(world, aim, 8.0f);
-		if (phase >= 2) {
+		if (phase == 3) {
 			this.shoot(world, aim.rotateY(0.25f), 8.0f);
 			this.shoot(world, aim.rotateY(-0.25f), 8.0f);
 		}
@@ -197,7 +268,7 @@ public class NovaOvermindEntity extends HostileEntity {
 
 	private void shoot(ServerWorld world, Vec3d direction, float damage) {
 		PlasmaBoltEntity bolt = new PlasmaBoltEntity(world, this);
-		bolt.setPosition(this.getX(), this.getY() + 1.3, this.getZ());
+		bolt.setPosition(this.getX(), this.getY() + 2.6, this.getZ());
 		bolt.setDamage(damage);
 		bolt.setVelocity(direction.x, direction.y, direction.z, 1.9f, 0.6f);
 		world.spawnEntity(bolt);
@@ -273,7 +344,7 @@ public class NovaOvermindEntity extends HostileEntity {
 	}
 
 	private void gravityPulse(ServerWorld world) {
-		world.spawnParticles(ParticleTypes.SONIC_BOOM, this.getX(), this.getY() + 1.3, this.getZ(), 1, 0.0, 0.0, 0.0, 0.0);
+		world.spawnParticles(ParticleTypes.SONIC_BOOM, this.getX(), this.getY() + 2.6, this.getZ(), 1, 0.0, 0.0, 0.0, 0.0);
 		world.playSound(null, this.getBlockPos(), SoundEvents.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.HOSTILE, 2.0f, 0.8f);
 		for (PlayerEntity player : world.getEntitiesByClass(PlayerEntity.class, this.getBoundingBox().expand(9.0), p -> p.isAlive())) {
 			double dx = player.getX() - this.getX();

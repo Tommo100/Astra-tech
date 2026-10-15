@@ -52,6 +52,12 @@ public class AstraTechClient implements ClientModInitializer {
 		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.PLASMA_DRONE, PlasmaDroneModel::getTexturedModelData);
 		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.ASTRO_BOT, AstroBotModel::getTexturedModelData);
 		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.LUNAR_HOPPER, LunarHopperModel::getTexturedModelData);
+		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.ASTRAL_GEAR, com.astratech.client.model.AstralGearModel::getTexturedModelData);
+		net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
+			if (entityRenderer instanceof net.minecraft.client.render.entity.PlayerEntityRenderer || entityRenderer instanceof net.minecraft.client.render.entity.ArmorStandEntityRenderer) {
+				registerGear(entityRenderer, registrationHelper, context);
+			}
+		});
 		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.NOVA_OVERMIND, NovaOvermindModel::getTexturedModelData);
 
 		// Entity renderers
@@ -61,6 +67,7 @@ public class AstraTechClient implements ClientModInitializer {
 		EntityRendererRegistry.register(ModEntities.ASTRO_BOT, AstroBotRenderer::new);
 		EntityRendererRegistry.register(ModEntities.LUNAR_HOPPER, LunarHopperRenderer::new);
 		EntityRendererRegistry.register(ModEntities.NOVA_OVERMIND, NovaOvermindRenderer::new);
+		EntityRendererRegistry.register(ModEntities.METEOR, context -> new FlyingItemEntityRenderer<>(context, 5.0f, true));
 		EntityRendererRegistry.register(ModEntities.PLASMA_ORB, context -> new FlyingItemEntityRenderer<>(context, 4.5f, true));
 		EntityRendererRegistry.register(ModEntities.PLASMA_BOLT, context -> new FlyingItemEntityRenderer<>(context, 1.6f, true));
 
@@ -124,5 +131,12 @@ public class AstraTechClient implements ClientModInitializer {
 				ClientPlayNetworking.send(ModNetworking.THRUST, PacketByteBufs.create());
 			}
 		});
+	}
+
+	@SuppressWarnings({"unchecked", "rawtypes"})
+	private static void registerGear(net.minecraft.client.render.entity.LivingEntityRenderer renderer,
+			net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback.RegistrationHelper helper,
+			net.minecraft.client.render.entity.EntityRendererFactory.Context context) {
+		helper.register(new com.astratech.client.render.AstralGearFeature(renderer, context.getModelLoader().getModelPart(ModModelLayers.ASTRAL_GEAR)));
 	}
 }

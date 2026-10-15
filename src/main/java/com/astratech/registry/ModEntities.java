@@ -5,6 +5,7 @@ import com.astratech.entity.LunarHopperEntity;
 import com.astratech.entity.LunarSentinelEntity;
 import com.astratech.entity.NovaOvermindEntity;
 import com.astratech.entity.PlasmaBoltEntity;
+import com.astratech.entity.MeteorEntity;
 import com.astratech.entity.PlasmaOrbEntity;
 import com.astratech.entity.PlasmaDroneEntity;
 import com.astratech.entity.VoidStalkerEntity;
@@ -33,6 +34,13 @@ public final class ModEntities {
 		FabricEntityTypeBuilder.<PlasmaOrbEntity>create(SpawnGroup.MISC, PlasmaOrbEntity::new)
 			.dimensions(EntityDimensions.fixed(0.9f, 0.9f))
 			.trackRangeBlocks(64).trackedUpdateRate(2).forceTrackedVelocityUpdates(true)
+			.build());
+
+	public static final EntityType<MeteorEntity> METEOR = Registry.register(Registries.ENTITY_TYPE,
+		new Identifier("astratech", "meteor"),
+		FabricEntityTypeBuilder.<MeteorEntity>create(SpawnGroup.MISC, MeteorEntity::new)
+			.dimensions(EntityDimensions.fixed(1.2f, 1.2f))
+			.trackRangeBlocks(128).trackedUpdateRate(2).forceTrackedVelocityUpdates(true)
 			.build());
 
 	public static final EntityType<LunarSentinelEntity> LUNAR_SENTINEL = Registry.register(Registries.ENTITY_TYPE,
@@ -68,7 +76,7 @@ public final class ModEntities {
 			.spawnGroup(SpawnGroup.CREATURE)
 			.dimensions(EntityDimensions.fixed(0.7f, 1.4f))
 			.spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-				(type, world, reason, pos, random) -> world.getBlockState(pos.down()).isOf(ModBlocks.LUNAR_REGOLITH))
+				(type, world, reason, pos, random) -> ModBlocks.isMoonSurface(world.getBlockState(pos.down())))
 			.trackRangeChunks(8)
 			.build());
 
@@ -78,7 +86,7 @@ public final class ModEntities {
 			.spawnGroup(SpawnGroup.CREATURE)
 			.dimensions(EntityDimensions.fixed(0.7f, 0.7f))
 			.spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-				(type, world, reason, pos, random) -> world.getBlockState(pos.down()).isOf(ModBlocks.LUNAR_REGOLITH))
+				(type, world, reason, pos, random) -> ModBlocks.isMoonSurface(world.getBlockState(pos.down())))
 			.trackRangeChunks(8)
 			.build());
 
@@ -86,7 +94,7 @@ public final class ModEntities {
 		new Identifier("astratech", "nova_overmind"),
 		FabricEntityTypeBuilder.createMob().<NovaOvermindEntity>entityFactory(NovaOvermindEntity::new)
 			.spawnGroup(SpawnGroup.MONSTER)
-			.dimensions(EntityDimensions.fixed(2.6f, 2.6f))
+			.dimensions(EntityDimensions.fixed(4.0f, 5.2f))
 			.fireImmune().trackRangeChunks(10)
 			.build());
 

@@ -77,13 +77,15 @@ public class MoonSky implements DimensionRenderingRegistry.SkyRenderer {
 	}
 
 	private void drawStars(Matrix4f matrix) {
-		RenderSystem.setShader(GameRenderer::getPositionProgram);
+		RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+		RenderSystem.disableCull();
+		RenderSystem.disableDepthTest();
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
 		RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder buffer = tessellator.getBuffer();
-		buffer.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION);
+		buffer.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
 		for (int i = 0; i < STAR_COUNT; i++) {
 			float dx = STAR_DATA[i * 4];
 			float dy = STAR_DATA[i * 4 + 1];
@@ -110,12 +112,18 @@ public class MoonSky implements DimensionRenderingRegistry.SkyRenderer {
 			float cy = dy * 100.0f;
 			float cz = dz * 100.0f;
 			float s = size * 1.6f;
-			buffer.vertex(matrix, cx - tx * s - bx * s, cy - ty * s - by * s, cz - tz * s - bz * s).next();
-			buffer.vertex(matrix, cx + tx * s - bx * s, cy + ty * s - by * s, cz + tz * s - bz * s).next();
-			buffer.vertex(matrix, cx + tx * s + bx * s, cy + ty * s + by * s, cz + tz * s + bz * s).next();
-			buffer.vertex(matrix, cx - tx * s + bx * s, cy - ty * s + by * s, cz - tz * s + bz * s).next();
+			float tint = (i * 37 % 100) / 100.0f;
+			float cr = tint < 0.2f ? 1.0f : (tint < 0.5f ? 0.8f : 1.0f);
+			float cg = tint < 0.2f ? 0.85f : (tint < 0.5f ? 0.9f : 1.0f);
+			float cb = tint < 0.2f ? 0.7f : 1.0f;
+			buffer.vertex(matrix, cx - tx * s - bx * s, cy - ty * s - by * s, cz - tz * s - bz * s).color(cr, cg, cb, 1.0f).next();
+			buffer.vertex(matrix, cx + tx * s - bx * s, cy + ty * s - by * s, cz + tz * s - bz * s).color(cr, cg, cb, 1.0f).next();
+			buffer.vertex(matrix, cx + tx * s + bx * s, cy + ty * s + by * s, cz + tz * s + bz * s).color(cr, cg, cb, 1.0f).next();
+			buffer.vertex(matrix, cx - tx * s + bx * s, cy - ty * s + by * s, cz - tz * s + bz * s).color(cr, cg, cb, 1.0f).next();
 		}
 		BufferRenderer.drawWithGlobalProgram(buffer.end());
+		RenderSystem.enableDepthTest();
+		RenderSystem.enableCull();
 	}
 
 	/** Draws a textured square at the given elevation (degrees above the horizon-plane tilt) and azimuth. */

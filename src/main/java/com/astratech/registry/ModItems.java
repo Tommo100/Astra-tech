@@ -7,6 +7,7 @@ import com.astratech.item.AstralHoeItem;
 import com.astratech.item.AstralPickaxeItem;
 import com.astratech.item.AstralShovelItem;
 import com.astratech.item.AstralSwordItem;
+import com.astratech.item.MeteorHammerItem;
 import com.astratech.item.IonIgniterItem;
 import com.astratech.item.PulseBlasterItem;
 import com.astratech.item.RemoteControllerItem;
@@ -35,6 +36,7 @@ public final class ModItems {
 
 	// Materials
 	public static final Item RAW_ASTRIUM = item("raw_astrium", new Item(new Item.Settings()));
+	public static final Item METEOR = Registry.register(Registries.ITEM, new Identifier("astratech", "meteor"), new Item(new Item.Settings()));
 	public static final Item PLASMA_ORB = Registry.register(Registries.ITEM, new Identifier("astratech", "plasma_orb"), new Item(new Item.Settings()));
 	public static final Item ASTRIUM_INGOT = item("astrium_ingot", new Item(new Item.Settings()));
 	public static final Item PLASMA_CRYSTAL = item("plasma_crystal", new Item(new Item.Settings()));
@@ -48,6 +50,7 @@ public final class ModItems {
 	public static final Item REMOTE_CONTROLLER = item("remote_controller", new RemoteControllerItem(new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
 
 	// Weapons and tools
+	public static final Item METEOR_HAMMER = item("meteor_hammer", new MeteorHammerItem(new Item.Settings().rarity(Rarity.EPIC).fireproof()));
 	public static final Item ASTRAL_BLADE = item("astral_blade", new AstralSwordItem(new Item.Settings().rarity(Rarity.EPIC).fireproof()));
 	public static final Item PULSE_BLASTER = item("pulse_blaster", new PulseBlasterItem(new Item.Settings().maxCount(1).maxDamage(2400).rarity(Rarity.EPIC).fireproof()));
 	public static final Item ASTRAL_PICKAXE = item("astral_pickaxe", new AstralPickaxeItem(new Item.Settings().rarity(Rarity.EPIC).fireproof()));
@@ -80,6 +83,11 @@ public final class ModItems {
 				entries.add(item);
 			}
 			entries.add(ModBlocks.LUNAR_REGOLITH);
+			entries.add(ModBlocks.LUNAR_DUST);
+			entries.add(ModBlocks.LUNAR_GRAVEL);
+			entries.add(ModBlocks.CRACKED_REGOLITH);
+			entries.add(ModBlocks.ASHEN_REGOLITH);
+			entries.add(ModBlocks.MARE_BASALT);
 			entries.add(ModBlocks.LUNAR_STONE);
 			entries.add(ModBlocks.ASTRIUM_ORE);
 			entries.add(ModBlocks.PLASMA_CRYSTAL_ORE);
