@@ -60,7 +60,7 @@ public class LunarBerryBushBlock extends SweetBerryBushBlock {
 			if (!world.isClient) {
 				int count = 1 + world.random.nextInt(2) + (age == 3 ? 1 : 0);
 				dropStack(world, pos, new ItemStack(this.berry.get(), count));
-				world.playSound(null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0f, 0.8f + world.random.nextFloat() * 0.4f);
+				world.playSound(null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0f, 0.8f + world.random.nextFloat() * 0.4f);
 				world.setBlockState(pos, state.with(AGE, 1), 2);
 			}
 			return ActionResult.success(world.isClient);
