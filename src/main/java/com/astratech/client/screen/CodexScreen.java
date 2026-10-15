@@ -336,7 +336,7 @@ public class CodexScreen extends Screen {
 		int w = cw - 8;
 		int y = cy - scroll + 2;
 		y = heading(ctx, "The Moon", x, y, CYAN);
-		y = text(ctx, "No atmosphere, no clouds: only black sky, a blazing sun and Earth hanging huge overhead. Three large biomes cover the surface: the grey Mare Plains (the middle ground, mixed regolith), the rugged Highlands (tall rough terrain of gravel and dark basalt, home of Spires, Radar and Stations) and the glittering Crystal Basin (a low bowl of ashen dust under a purple haze, studded with towering Plasma Crystal formations). Use /locate biome to find them.", x, y, w, TEXT) + 4;
+		y = text(ctx, "No atmosphere, no clouds: only black sky, a blazing sun and Earth hanging huge overhead. Three large biomes cover the surface: the grey Mare Plains (the middle ground, mixed regolith), the rugged Highlands (tall rough terrain of gravel and dark basalt, home of Spires, Radar and Stations) and the glittering Crystal Basin (a low bowl of ashen dust under a purple haze, studded with towering spires of lunar stone and Plasma Crystal ore, some capped with Budding Plasma Crystal that slowly grows crystal clusters). Use /locate biome to find them.", x, y, w, TEXT) + 4;
 		y = text(ctx, "Impact craters scar the surface and hide Plasma Crystal deposits. Drones, Stalkers and Sentinels roam freely, even in daylight. Astro Bots and Lunar Hoppers are friendly.", x, y, w, TEXT) + 6;
 		y = heading(ctx, "Structures", x, y, CYAN);
 		y = text(ctx, "Outposts: small glass domes with an antenna mast, a loot chest and sometimes a guard.", x, y, w, TEXT) + 2;
@@ -355,7 +355,7 @@ public class CodexScreen extends Screen {
 		y = iconLine(ctx, ModBlocks.LUNAR_REGOLITH.asItem(), "Lunar Regolith, Dust, Gravel, Cracked and Ashen Regolith, and Mare Basalt cover the Moon's surface in patches; Lunar Stone is the bedrock.", x, y, w, TEXT);
 		y = iconLine(ctx, ModBlocks.PLASMA_CRYSTAL_ORE.asItem(), "Floating Asteroids: rocky islands of ore drifting 160+ blocks above the surface, some carrying a loot cache. Fly up with the jetpack to find them.", x, y, w, TEXT);
 		y = iconLine(ctx, ModItems.PURPLE_LUNAR_BERRIES, "Gray and Purple Lunar Berries grow rarely in patches on the surface. Gray restores health over time, Purple gives a long Jump Boost. Plant them on any surface block. Craft one of each together to make Space Jam, which gives both effects (and fills you up) in one.", x, y, w, TEXT);
-		y = iconLine(ctx, ModBlocks.ASTRIUM_BLOCK.asItem(), "Astrium Block: compact storage (9 ingots). Plasma Crystal Block: 9 crystals, glows. Lunar Alloy Block: found in structures, cannot be smelted into ingots.", x, y, w, TEXT);
+		y = iconLine(ctx, ModBlocks.ASTRIUM_BLOCK.asItem(), "Astrium Block: compact storage (9 ingots). Plasma Crystal Block: 9 crystals, glows. Lunar Alloy Block: found in structures, cannot be smelted into ingots. Budding Plasma Crystal (Silk Touch to collect) grows buds and clusters on its faces; buds only place on Budding or Plasma Crystal Blocks.", x, y, w, TEXT);
 		return y;
 	}
 

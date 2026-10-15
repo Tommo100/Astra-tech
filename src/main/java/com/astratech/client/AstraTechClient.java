@@ -75,6 +75,9 @@ public class AstraTechClient implements ClientModInitializer {
 
 		// Blocks
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUNAR_PORTAL, RenderLayer.getTranslucent());
+		for (net.minecraft.block.Block crystalBud : new net.minecraft.block.Block[]{ModBlocks.SMALL_PLASMA_BUD, ModBlocks.MEDIUM_PLASMA_BUD, ModBlocks.LARGE_PLASMA_BUD, ModBlocks.PLASMA_CRYSTAL_CLUSTER}) {
+			BlockRenderLayerMap.INSTANCE.putBlock(crystalBud, RenderLayer.getCutout());
+		}
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GRAY_LUNAR_BERRY_BUSH, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PURPLE_LUNAR_BERRY_BUSH, RenderLayer.getCutout());
 

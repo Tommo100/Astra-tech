@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "astratech:block/large_plasma_bud"
+    },
+    "facing=down": {
+      "model": "astratech:block/large_plasma_bud",
+      "x": 180
+    },
+    "facing=north": {
+      "model": "astratech:block/large_plasma_bud",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "astratech:block/large_plasma_bud",
+      "x": 90,
+      "y": 90
+    },
+    "facing=south": {
+      "model": "astratech:block/large_plasma_bud",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west": {
+      "model": "astratech:block/large_plasma_bud",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

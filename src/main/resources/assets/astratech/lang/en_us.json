@@ -64,5 +64,10 @@
   "item.astratech.purple_lunar_berries": "Purple Lunar Berries",
   "item.astratech.space_jam": "Space Jam",
   "block.astratech.asteroid_rock": "Asteroid Rock",
-  "block.astratech.asteroid_crust": "Asteroid Crust"
+  "block.astratech.asteroid_crust": "Asteroid Crust",
+  "block.astratech.small_plasma_bud": "Small Plasma Bud",
+  "block.astratech.medium_plasma_bud": "Medium Plasma Bud",
+  "block.astratech.large_plasma_bud": "Large Plasma Bud",
+  "block.astratech.plasma_crystal_cluster": "Plasma Crystal Cluster",
+  "block.astratech.budding_plasma_crystal": "Budding Plasma Crystal"
 }

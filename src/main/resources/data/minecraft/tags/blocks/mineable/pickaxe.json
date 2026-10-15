@@ -12,6 +12,11 @@
     "astratech:mare_basalt",
     "astratech:lunar_alloy_block",
     "astratech:plasma_crystal_block",
-    "astratech:asteroid_rock"
+    "astratech:asteroid_rock",
+    "astratech:small_plasma_bud",
+    "astratech:medium_plasma_bud",
+    "astratech:large_plasma_bud",
+    "astratech:plasma_crystal_cluster",
+    "astratech:budding_plasma_crystal"
   ]
 }

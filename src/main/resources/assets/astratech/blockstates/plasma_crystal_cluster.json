@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "astratech:block/plasma_crystal_cluster"
+    },
+    "facing=down": {
+      "model": "astratech:block/plasma_crystal_cluster",
+      "x": 180
+    },
+    "facing=north": {
+      "model": "astratech:block/plasma_crystal_cluster",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "astratech:block/plasma_crystal_cluster",
+      "x": 90,
+      "y": 90
+    },
+    "facing=south": {
+      "model": "astratech:block/plasma_crystal_cluster",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west": {
+      "model": "astratech:block/plasma_crystal_cluster",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

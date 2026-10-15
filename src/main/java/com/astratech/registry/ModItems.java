@@ -103,6 +103,11 @@ public final class ModItems {
 			entries.add(ModBlocks.PLASMA_CRYSTAL_ORE);
 			entries.add(ModBlocks.ASTRIUM_BLOCK);
 			entries.add(ModBlocks.PLASMA_CRYSTAL_BLOCK);
+			entries.add(ModBlocks.BUDDING_PLASMA_CRYSTAL);
+			entries.add(ModBlocks.SMALL_PLASMA_BUD);
+			entries.add(ModBlocks.MEDIUM_PLASMA_BUD);
+			entries.add(ModBlocks.LARGE_PLASMA_BUD);
+			entries.add(ModBlocks.PLASMA_CRYSTAL_CLUSTER);
 			entries.add(ModBlocks.LUNAR_ALLOY_BLOCK);
 			entries.add(ModBlocks.TECH_PLATING);
 			entries.add(ModBlocks.PLASMA_LAMP);

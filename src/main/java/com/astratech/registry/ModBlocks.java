@@ -46,6 +46,13 @@ public final class ModBlocks {
 		new Block(FabricBlockSettings.create().mapColor(MapColor.IRON_GRAY).strength(6.0f, 10.0f).requiresTool().sounds(BlockSoundGroup.NETHERITE)));
 	public static final Block PLASMA_CRYSTAL_BLOCK = register("plasma_crystal_block",
 		new Block(FabricBlockSettings.create().mapColor(MapColor.CYAN).strength(4.0f, 8.0f).requiresTool().luminance(s -> 10).sounds(BlockSoundGroup.AMETHYST_BLOCK)));
+	public static final Block BUDDING_PLASMA_CRYSTAL = register("budding_plasma_crystal",
+		new com.astratech.block.BuddingPlasmaCrystalBlock(FabricBlockSettings.create().mapColor(MapColor.CYAN).strength(2.0f, 4.0f).requiresTool().ticksRandomly().luminance(s -> 8)
+			.sounds(BlockSoundGroup.AMETHYST_BLOCK).pistonBehavior(net.minecraft.block.piston.PistonBehavior.DESTROY)));
+	public static final Block SMALL_PLASMA_BUD = register("small_plasma_bud", bud(3, 4, 2));
+	public static final Block MEDIUM_PLASMA_BUD = register("medium_plasma_bud", bud(4, 3, 4));
+	public static final Block LARGE_PLASMA_BUD = register("large_plasma_bud", bud(5, 3, 6));
+	public static final Block PLASMA_CRYSTAL_CLUSTER = register("plasma_crystal_cluster", bud(7, 3, 8));
 	public static final Block TECH_PLATING = register("tech_plating",
 		new Block(FabricBlockSettings.create().mapColor(MapColor.IRON_GRAY).strength(5.0f, 10.0f).requiresTool().sounds(BlockSoundGroup.NETHERITE)));
 	public static final Block PLASMA_LAMP = register("plasma_lamp",
@@ -61,6 +68,11 @@ public final class ModBlocks {
 	public static boolean isMoonSurface(net.minecraft.block.BlockState state) {
 		return state.isOf(LUNAR_REGOLITH) || state.isOf(LUNAR_DUST) || state.isOf(LUNAR_GRAVEL)
 			|| state.isOf(MARE_BASALT) || state.isOf(CRACKED_REGOLITH) || state.isOf(ASHEN_REGOLITH);
+	}
+
+	private static Block bud(int height, int offset, int light) {
+		return new com.astratech.block.PlasmaClusterBlock(height, offset, FabricBlockSettings.create().mapColor(MapColor.CYAN).nonOpaque().noCollision().strength(1.5f)
+			.luminance(s -> light).sounds(BlockSoundGroup.AMETHYST_CLUSTER).pistonBehavior(net.minecraft.block.piston.PistonBehavior.DESTROY));
 	}
 
 	private ModBlocks() {
