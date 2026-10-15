@@ -29,6 +29,11 @@ public final class ModBlocks {
 		new com.astratech.block.LunarBerryBushBlock(FabricBlockSettings.create().mapColor(MapColor.GRAY).noCollision().ticksRandomly().sounds(BlockSoundGroup.SWEET_BERRY_BUSH).pistonBehavior(net.minecraft.block.piston.PistonBehavior.DESTROY), () -> ModItems.GRAY_LUNAR_BERRIES));
 	public static final Block PURPLE_LUNAR_BERRY_BUSH = registerNoItem("purple_lunar_berry_bush",
 		new com.astratech.block.LunarBerryBushBlock(FabricBlockSettings.create().mapColor(MapColor.PURPLE).noCollision().ticksRandomly().sounds(BlockSoundGroup.SWEET_BERRY_BUSH).pistonBehavior(net.minecraft.block.piston.PistonBehavior.DESTROY), () -> ModItems.PURPLE_LUNAR_BERRIES));
+	/** Asteroid blocks are see-through to skylight so floating rocks never darken the ground below. */
+	public static final Block ASTEROID_ROCK = registerNoItem("asteroid_rock",
+		new Block(FabricBlockSettings.create().mapColor(MapColor.STONE_GRAY).strength(3.0f, 8.0f).requiresTool().nonOpaque()));
+	public static final Block ASTEROID_CRUST = registerNoItem("asteroid_crust",
+		new Block(FabricBlockSettings.create().mapColor(MapColor.STONE_GRAY).strength(1.0f).sounds(BlockSoundGroup.SAND).nonOpaque()));
 	public static final Block LUNAR_STONE = register("lunar_stone",
 		new Block(FabricBlockSettings.create().mapColor(MapColor.STONE_GRAY).strength(3.0f, 8.0f).requiresTool()));
 	public static final Block ASTRIUM_ORE = register("astrium_ore",

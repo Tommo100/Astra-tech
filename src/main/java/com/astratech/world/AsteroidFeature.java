@@ -16,29 +16,28 @@ public class AsteroidFeature extends BaseStructureFeature {
 	protected boolean build(Builder b) {
 		int top = b.world.getTopY();
 		int cy = 160 + b.random.nextInt(Math.max(1, Math.min(70, top - 160 - 20)));
-		BlockState stone = ModBlocks.LUNAR_STONE.getDefaultState();
-		BlockState regolith = ModBlocks.LUNAR_REGOLITH.getDefaultState();
-		BlockState gravel = ModBlocks.LUNAR_GRAVEL.getDefaultState();
-		BlockState basalt = ModBlocks.MARE_BASALT.getDefaultState();
+		BlockState stone = ModBlocks.ASTEROID_ROCK.getDefaultState();
+		BlockState crust = ModBlocks.ASTEROID_CRUST.getDefaultState();
 		BlockState astriumOre = ModBlocks.ASTRIUM_ORE.getDefaultState();
 		BlockState crystalOre = ModBlocks.PLASMA_CRYSTAL_ORE.getDefaultState();
 		BlockState lamp = ModBlocks.PLASMA_LAMP.getDefaultState();
 		BlockState plating = ModBlocks.TECH_PLATING.getDefaultState();
-		int size = 1 + b.random.nextInt(3); // 1 small, 2 medium, 3 large
+		int roll0 = b.random.nextInt(10);
+		int size = roll0 < 6 ? 1 : (roll0 < 9 ? 2 : 3); // mostly small
 
-		int lumps = 2 + size;
+		int lumps = 1 + size;
 		int[] lx = new int[lumps];
 		int[] ly = new int[lumps];
 		int[] lz = new int[lumps];
 		double[] lr = new double[lumps];
 		for (int i = 0; i < lumps; i++) {
-			int spread = 2 + size * 2;
+			int spread = 1 + (size * 3) / 2;
 			lx[i] = b.cx + (i == 0 ? 0 : b.random.nextInt(spread * 2 + 1) - spread);
 			lz[i] = b.cz + (i == 0 ? 0 : b.random.nextInt(spread * 2 + 1) - spread);
 			ly[i] = cy + (i == 0 ? 0 : b.random.nextInt(5) - 2);
-			lr[i] = i == 0 ? 3.0 + size * 1.7 : 2.0 + size * 0.9 + b.random.nextDouble() * 1.5;
+			lr[i] = i == 0 ? 2.2 + size * 1.1 : 1.5 + size * 0.6 + b.random.nextDouble() * 1.0;
 		}
-		int reach = 6 + size * 3;
+		int reach = 5 + size * 2;
 		int minX = b.cx - reach, maxX = b.cx + reach;
 		java.util.List<int[]> solids = new java.util.ArrayList<>();
 		for (int x = minX; x <= maxX; x++) {
@@ -69,22 +68,21 @@ public class AsteroidFeature extends BaseStructureFeature {
 		for (int[] p : solids) {
 			double roll = b.random.nextDouble();
 			BlockState state = stone;
-			if (roll < 0.035) {
+			if (roll < 0.015) {
 				state = astriumOre;
-			} else if (roll < 0.05) {
+			} else if (roll < 0.022) {
 				state = crystalOre;
 			}
 			b.set(p[0], p[1], p[2], state);
 		}
 		// crust: swap exposed upper faces for surface blocks
 		for (int[] p : solids) {
-			if (b.get(p[0], p[1] + 1, p[2]).isAir() && b.get(p[0], p[1], p[2]).isOf(ModBlocks.LUNAR_STONE)) {
-				int r = b.random.nextInt(10);
-				b.set(p[0], p[1], p[2], r < 6 ? regolith : (r < 8 ? gravel : basalt));
+			if (b.get(p[0], p[1] + 1, p[2]).isAir() && b.get(p[0], p[1], p[2]).isOf(ModBlocks.ASTEROID_ROCK)) {
+				b.set(p[0], p[1], p[2], crust);
 			}
 		}
 		// loot cache on the highest block near the middle
-		if (b.random.nextInt(100) < 65) {
+		if (b.random.nextInt(100) < 22) {
 			int bestY = Integer.MIN_VALUE;
 			int bx = b.cx, bz = b.cz;
 			for (int[] p : solids) {
