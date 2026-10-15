@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "astratech:astrium_ingot"
+    },
+    "C": {
+      "item": "astratech:plasma_crystal"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ACA",
+    "A A"
+  ],
+  "result": {
+    "item": "astratech:astral_leggings",
+    "count": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "astratech:block/summoning_terminal_top",
+    "side": "astratech:block/summoning_terminal_side",
+    "bottom": "astratech:block/summoning_terminal_bottom"
+  }
+}

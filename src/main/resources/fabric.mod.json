@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "astratech",
+  "version": "${version}",
+  "name": "Astra Tech",
+  "description": "Space-future-tech mod: craft a Lunar Gateway, travel to a high-tech Moon dimension, fight end-game mobs, summon the Nova Overmind and forge Astral armour and weapons.",
+  "authors": ["Astra Tech"],
+  "license": "MIT",
+  "icon": "assets/astratech/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.astratech.AstraTech"],
+    "client": ["com.astratech.client.AstraTechClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*"
+  }
+}

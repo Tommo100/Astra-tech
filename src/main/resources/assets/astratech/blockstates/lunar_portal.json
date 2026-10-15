@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "astratech:block/lunar_portal_x"
+    },
+    "axis=z": {
+      "model": "astratech:block/lunar_portal_z"
+    }
+  }
+}

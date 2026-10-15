@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "astratech:astrium_ingot"
+    },
+    "N": {
+      "item": "astratech:nova_core"
+    }
+  },
+  "pattern": [
+    "A",
+    "A",
+    "N"
+  ],
+  "result": {
+    "item": "astratech:astral_blade",
+    "count": 1
+  }
+}

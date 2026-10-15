@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "astratech:astrium_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "AI",
+    "IA"
+  ],
+  "result": {
+    "item": "astratech:tech_plating",
+    "count": 4
+  }
+}

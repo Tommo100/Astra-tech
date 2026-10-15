@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "astratech:lunar_stone",
+    "astratech:astrium_ore",
+    "astratech:plasma_crystal_ore",
+    "astratech:astrium_block",
+    "astratech:tech_plating",
+    "astratech:plasma_lamp",
+    "astratech:gateway_frame",
+    "astratech:summoning_terminal"
+  ]
+}

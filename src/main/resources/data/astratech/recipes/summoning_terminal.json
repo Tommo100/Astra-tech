@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "T": {
+      "item": "astratech:tech_plating"
+    },
+    "P": {
+      "item": "astratech:plasma_crystal"
+    },
+    "A": {
+      "item": "astratech:astrium_block"
+    }
+  },
+  "pattern": [
+    "TPT",
+    "PAP",
+    "TTT"
+  ],
+  "result": {
+    "item": "astratech:summoning_terminal",
+    "count": 1
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "has_precipitation": false,
+  "temperature": 0.8,
+  "downfall": 0.0,
+  "effects": {
+    "sky_color": 0,
+    "fog_color": 0,
+    "water_color": 4159204,
+    "water_fog_color": 329011
+  },
+  "carvers": {},
+  "features": [
+    [],
+    [],
+    [
+      "astratech:crater_common"
+    ],
+    [],
+    [
+      "astratech:outpost",
+      "astratech:radar",
+      "astratech:station",
+      "astratech:spaceship",
+      "astratech:sanctum"
+    ],
+    [],
+    [
+      "astratech:ore_astrium",
+      "astratech:ore_plasma_crystal"
+    ],
+    [],
+    [],
+    [],
+    []
+  ],
+  "creature_spawn_probability": 0.12,
+  "spawners": {
+    "monster": [
+      {
+        "type": "astratech:void_stalker",
+        "weight": 18,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "astratech:lunar_sentinel",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "astratech:plasma_drone",
+        "weight": 14,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    ],
+    "creature": [
+      {
+        "type": "astratech:lunar_hopper",
+        "weight": 14,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "astratech:astro_bot",
+        "weight": 6,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "ambient": [],
+    "axolotls": [],
+    "misc": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": []
+  },
+  "spawn_costs": {}
+}

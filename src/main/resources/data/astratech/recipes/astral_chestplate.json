@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "astratech:astrium_ingot"
+    },
+    "C": {
+      "item": "astratech:plasma_crystal"
+    },
+    "N": {
+      "item": "astratech:nova_core"
+    }
+  },
+  "pattern": [
+    "ACA",
+    "ANA",
+    "AAA"
+  ],
+  "result": {
+    "item": "astratech:astral_chestplate",
+    "count": 1
+  }
+}

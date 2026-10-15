@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": {
+    "item": "astratech:raw_astrium"
+  },
+  "result": "astratech:astrium_ingot",
+  "experience": 1.0,
+  "cookingtime": 200
+}

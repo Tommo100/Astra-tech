@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "P": {
+      "item": "astratech:plasma_crystal"
+    },
+    "A": {
+      "item": "astratech:astrium_ingot"
+    },
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "pattern": [
+    "PAP",
+    "ANA",
+    "PAP"
+  ],
+  "result": {
+    "item": "astratech:quantum_core",
+    "count": 1
+  }
+}

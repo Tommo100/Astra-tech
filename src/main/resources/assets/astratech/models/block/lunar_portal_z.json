@@ -1,0 +1,41 @@
+{
+  "textures": {
+    "particle": "astratech:block/lunar_portal",
+    "portal": "astratech:block/lunar_portal"
+  },
+  "elements": [
+    {
+      "from": [
+        7,
+        0,
+        0
+      ],
+      "to": [
+        9,
+        16,
+        16
+      ],
+      "shade": false,
+      "faces": {
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#portal"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#portal"
+        }
+      }
+    }
+  ]
+}

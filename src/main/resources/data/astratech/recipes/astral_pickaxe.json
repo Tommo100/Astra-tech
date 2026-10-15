@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "astratech:astrium_ingot"
+    },
+    "C": {
+      "item": "astratech:plasma_crystal"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "ACA",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "item": "astratech:astral_pickaxe",
+    "count": 1
+  }
+}

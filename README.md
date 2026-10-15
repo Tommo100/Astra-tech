@@ -16,3 +16,14 @@ Minecraft 1.20.1, Fabric Loader 0.15.11+, Fabric API 0.92.2+1.20.1, Java 17.
 5. Showcase tab (creative / op level 2 / singleplayer) spawns any item, mob, or warps you.
 
 Jetpack (Astral Chestplate): hold jump in air; sneak+jump hovers. Dedicated servers need `allow-flight=true`.
+
+## What is in 1.1
+- Plasma Blade is larger in hand; right-click fires the **Photon Lance**, a piercing laser beam.
+- Pulse Blaster fires faster bolts and holds level, barrel forward.
+- Structures: Outposts, Helios Stations, Lumen Spires (tree-shaped tech towers), Landed Spaceships, Radar Arrays, and Overmind Sanctums (a ready-made Summoning Terminal plus a Quantum Core chest).
+- **Companion Remote** (craft: ACA / RNR / AAA with A=Astrium Ingot, C=Plasma Crystal, R=Redstone, N=Nova Core): deploys your own Astro Bot that follows and fights for you.
+- Jetpack: hold **R** (rebindable under Controls > Astra Tech) to boost forward where you look.
+- HD (64x64) tool and armour icons; 128x64 armour textures.
+
+## Status
+Written without a compiler available; not built or run. If the build reports errors, paste the log and they can be fixed quickly.

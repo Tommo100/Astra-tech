@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ACA",
+    "RNR",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "astratech:astrium_ingot"
+    },
+    "C": {
+      "item": "astratech:plasma_crystal"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "N": {
+      "item": "astratech:nova_core"
+    }
+  },
+  "result": {
+    "item": "astratech:remote_controller",
+    "count": 1
+  },
+  "category": "equipment"
+}
